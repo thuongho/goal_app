@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  expire: 2014-04-21 04:13:56
+
+two:
+  name: MyString
+  description: MyText
+  expire: 2014-04-21 04:13:56

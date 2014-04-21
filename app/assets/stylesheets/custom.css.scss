@@ -1,0 +1,9 @@
+@import "bootstrap";
+// Styling the goals table
+body { padding-top: 100px; }
+footer { margin-top: 100px; }
+table, td, th { vertical-align: middle; border: none; }
+th, td { 
+  border-bottom: 1px solid #DDD; 
+  padding: 10px;
+}
