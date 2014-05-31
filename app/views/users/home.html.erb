@@ -1,0 +1,18 @@
+<h1>Users</h1>
+<table>
+<tr>
+  <th>Name</th>
+  <th>Goals</th>
+  <th></th>
+</tr>
+
+  <% @users.each do |user| %>
+  <% user.goals.each do |goal| %>
+  <tr>
+    <td><%= user.email %></td>
+    <td><%= goal.name %></td>
+    <td><%= link_to 'View', [user, goal], class: 'btn btn-info' %></td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>

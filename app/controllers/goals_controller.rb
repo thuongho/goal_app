@@ -1,10 +1,13 @@
 class GoalsController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
+  before_action :get_user
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    # @goals = Goal.all
+    @goals = @user.goals.all
   end
 
   # GET /goals/1
@@ -14,21 +17,25 @@ class GoalsController < ApplicationController
 
   # GET /goals/new
   def new
-    @goal = Goal.new
+    # @goal = Goal.new
+    @goal = @user.goals.new
   end
 
   # GET /goals/1/edit
   def edit
+    # @goal = @user.goal
   end
 
   # POST /goals
   # POST /goals.json
   def create
-    @goal = Goal.new(goal_params)
+    # @goal = Goal.new(goal_params)
+    @goal = @user.goals.new(goal_params)
 
     respond_to do |format|
       if @goal.save
-        format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
+        # format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
+        format.html { redirect_to :show, notice: 'Goal was successfully created.' }
         format.json { render :show, status: :created, location: @goal }
       else
         format.html { render :new }
@@ -62,9 +69,19 @@ class GoalsController < ApplicationController
   end
 
   private
+
+    def get_user
+      # @user = User.find(params[:id]) ||= current_user
+      @user = User.find(params[:user_id])
+      # @user = User.find(params[:id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_goal
-      @goal = Goal.find(params[:id])
+      # @goal = Goal.find(params[:id])
+      # @goal = current_user.
+      @goal = @user.goals.find(params[:id])
+      # @goal = @user.goal
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
